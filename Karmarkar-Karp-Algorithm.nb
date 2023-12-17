@@ -1,0 +1,20 @@
+S = {18, 17, 12, 11, 8, 2}
+
+KK[x_List] := 
+ Module[{}, a = Sort[x, Greater]; b = {}; 
+  While[Length[a] > 1, PrependTo[b, {a[[1]], a[[2]], a[[1]] - a[[2]]}];
+   AppendTo[a, a[[1]] - a[[2]]]; a = Sort[Drop[a, 2], Greater]]; 
+  S1 = a; S2 = {}; 
+  While[Length[b] > 0, 
+   If[Position[S1, b[[1, 3]]] != {}, 
+    S1 = Delete[S1, FirstPosition[S1, b[[1, 3]]][[1]]]; 
+    PrependTo[S1, b[[1, 1]]]; PrependTo[S2, b[[1, 2]]], 
+    PrependTo[S1, b[[1, 2]]]; 
+    S2 = Delete[S2, FirstPosition[S2, b[[1, 3]]][[1]]]; 
+    PrependTo[S2, b[[1, 1]]]]; b = Drop[b, 1]]; 
+  Print["S1=", S1, "  S2=", S2, "   Разность суммм = ", 
+   Total[S1] - Total[S2]]]
+
+KK[S]
+
+S1={17,11,8}  S2={18,12,2}   Разность суммм = 4

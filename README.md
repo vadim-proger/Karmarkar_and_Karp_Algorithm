@@ -1,1 +1,1 @@
-# Karmarkar_and_Karp_Algorithm
+# Karmarkar-Karp-Algorithm
